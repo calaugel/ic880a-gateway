@@ -184,6 +184,7 @@ fi
 
 popd
 
+echo $GATEWAY_EUI > /data/EUI.txt
 echo "Gateway EUI is: $GATEWAY_EUI"
 echo "The hostname is: $NEW_HOSTNAME"
 echo "Open TTN console and register your gateway using your EUI: https://console.thethingsnetwork.org/gateways"
