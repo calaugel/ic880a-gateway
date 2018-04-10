@@ -192,6 +192,9 @@ echo "Open TTN console and register your gateway using your EUI: https://console
 echo
 echo "Installation completed."
 
+#activate SPI on RPi to enable communication with the concentrator (see https://www.raspberrypi.org/documentation/hardware/raspberrypi/spi/ )
+echo "dtparam=spi=on" >> /boot/config.txt
+
 # Start packet forwarder as a service
 cp ./start.sh $INSTALL_DIR/bin/
 cp ./ttn-gateway.service /lib/systemd/system/
