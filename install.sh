@@ -184,17 +184,18 @@ fi
 
 popd
 
-echo $GATEWAY_EUI > /data/EUI.txt
 echo $GATEWAY_EUI > /opt/ttn-gateway/gateway-remote-config/$GATEWAY_EUI.json
 echo "Gateway EUI is: $GATEWAY_EUI"
 echo "The hostname is: $NEW_HOSTNAME"
-echo "Open TTN console and register your gateway using your EUI: https://console.thethingsnetwork.org/gateways"
+echo "Open TTN console and register your gateway using your EUI: https://console.thethingsnetwork.org/gateways
+echo $GATEWAY_EUI > /data/EUI.txt
 echo
 echo "Installation completed."
 
 #activate SPI on RPi to enable communication with the concentrator (see https://www.raspberrypi.org/documentation/hardware/raspberrypi/spi/ )
 sudo sed -i '/#dtparam=spi=on/c\dtparm=spi=on' /boot/config.txt
 sudo sed -i '/dtparam=spi=off/c\dtparm=spi=on' /boot/config.txt
+echo "SPI activation executed"
 
 # Start packet forwarder as a service
 cp ./start.sh $INSTALL_DIR/bin/
@@ -203,4 +204,4 @@ systemctl enable ttn-gateway.service
 
 echo "The system will reboot in 5 seconds..."
 sleep 5
-shutdown -r now
+sudo reboot
